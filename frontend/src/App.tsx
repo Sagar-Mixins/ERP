@@ -20,6 +20,8 @@ import Ledger from './pages/Finance/Ledger/Ledger';
 import Report from './pages/Reports/Report/Report';
 import GST from './pages/Reports/GST/GST';
 import AI from './pages/Reports/AI/AI';
+import Navbar from './layout/Navbar';
+import Addproduct from "./pages/Masters/Products/components/Addproduct";
 
 function App() {
 
@@ -31,35 +33,38 @@ function App() {
 
   return (
     <div className="min-h-screen bg-neutral-100 lg:flex">
-      
+
       {!hideSidebar && <Sidebar />}
 
-      <main className="flex-1 min-w-0 bg-neutral-100">
 
+
+      <main className="flex-1 min-w-0 bg-neutral-100">
+        {!hideSidebar && <Navbar />}
         <Routes>
 
           <Route path="/" element={<Dashboard />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/settings" element={<Settings/>} />
-          
-          <Route path="/masters/products" element={<Products/>} />
-          <Route path="/masters/parties" element={<Parties/>} />
-          <Route path="/masters/accounts" element={<Accounts/>} />
-          <Route path="/masters/employees" element={<Employees/>} />
-          <Route path="/masters/offers" element={<Offers/>} />
+          <Route path="/settings" element={<Settings />} />
 
-          <Route path="/transactions/sales" element={<Sales/>} />
-          <Route path="/transactions/purchase" element={<Purchase/>} />
-          <Route path="/transactions/update" element={<Update/>} />
-          <Route path="/transactions/stock" element={<Stock/>} />
+          <Route path="/masters/products" element={<Products />} />
+          <Route path="/masters/products/add" element={<Addproduct />} />
+          <Route path="/masters/parties" element={<Parties />} />
+          <Route path="/masters/accounts" element={<Accounts />} />
+          <Route path="/masters/employees" element={<Employees />} />
+          <Route path="/masters/offers" element={<Offers />} />
 
-          <Route path="/finance/voucher" element={<Voucher/>} />
-          <Route path="/finance/ledger" element={<Ledger/>} />
+          <Route path="/transactions/sales" element={<Sales />} />
+          <Route path="/transactions/purchase" element={<Purchase />} />
+          <Route path="/transactions/update" element={<Update />} />
+          <Route path="/transactions/stock" element={<Stock />} />
 
-          <Route path="/reports/report" element={<Report/>} />
-          <Route path="/reports/gst" element={<GST/>} />
-          <Route path="/reports/ai" element={<AI/>} />
+          <Route path="/finance/voucher" element={<Voucher />} />
+          <Route path="/finance/ledger" element={<Ledger />} />
+
+          <Route path="/reports/report" element={<Report />} />
+          <Route path="/reports/gst" element={<GST />} />
+          <Route path="/reports/ai" element={<AI />} />
 
         </Routes>
 

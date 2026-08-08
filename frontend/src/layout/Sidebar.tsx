@@ -1,19 +1,24 @@
-import React from 'react'
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+import { PanelLeft } from "lucide-react";
+
 
 function Sidebar() {
+
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <aside className="hidden lg:flex lg:w-72 lg:shrink-0 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-white lg:min-h-screen">
-      <div className="border-b border-gray-200 px-6 py-5">
-        <div className="text-lg font-bold text-gray-900">Side Bar</div>
-        <p className="text-sm text-gray-500">Navigation</p>
+    <aside className='bg-[#0f172a] text-white'>
+      <div className="flex items-center gap-3 px-2 py-5">
+        <button onClick={() => setIsOpen(!isOpen)}
+          className="p-2 rounded-lg hover:bg-white/10">
+          <PanelLeft size={20} />
+        </button>
+
+        <span className={`text-xl font-bold ${isOpen ? 'block' : 'hidden'} `}> ShopERP</span>
+
+
       </div>
-      <nav className="flex flex-col gap-1 p-4 text-sm font-medium text-gray-700">
-        <Link to="/" className="rounded-xl px-4 py-3 hover:bg-gray-100">Dashboard</Link>
-        <Link to="#" className="rounded-xl px-4 py-3 hover:bg-gray-100">Overview</Link>
-        <Link to="#" className="rounded-xl px-4 py-3 hover:bg-gray-100">Reports</Link>
-        <Link to="/Settings" className="rounded-xl px-4 py-3 hover:bg-gray-100">Settings</Link>
-      </nav>
     </aside>
   )
 }

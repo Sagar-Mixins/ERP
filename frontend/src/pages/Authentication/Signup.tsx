@@ -1,16 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Baner from "./components/Baner";
 import { Link } from "react-router-dom";
-import {
-    User,
-    Phone,
-    Mail,
-    Lock,
-    Eye,
-    EyeOff,
-    ArrowRight,
-
-} from "lucide-react";
+import {User,Phone,Mail,Lock,Eye,EyeOff,ArrowRight,} from "lucide-react";
 
 function Signup() {
 

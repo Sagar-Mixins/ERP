@@ -1,15 +1,12 @@
-import {
-    ShoppingBag,
-    ScanBarcode,
-    Gift,
-    Layers,
-} from "lucide-react";
+import { ShoppingBag, ScanBarcode, Gift, Layers, } from "lucide-react";
 
 function Baner() {
     return (
         <>
             {/* Left Section */}
-            <section className="relative w-full overflow-hidden bg-linear-to-br from-blue-600 to-blue-700 flex min-h-80 flex-col justify-between px-6 py-10 text-white sm:px-10 lg:w-1/2 lg:min-h-screen lg:px-14 lg:py-12">
+            {/* <section className="hidden lg:flex relative w-full overflow-hidden bg-linear-to-br from-blue-600 to-blue-700 min-h-screen flex-col justify-between px-6 py-10 text-white lg:w-1/2 lg:px-14 lg:py-12"> */}
+            <section className="hidden lg:flex relative w-1/2 overflow-hidden bg-linear-to-br from-blue-600 to-blue-700 min-h-screen flex-col justify-between px-14 py-12 text-white">
+
 
                 {/* Decorative blobs */}
                 <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10" />

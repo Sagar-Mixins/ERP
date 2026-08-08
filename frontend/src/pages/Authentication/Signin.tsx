@@ -25,7 +25,7 @@ function Signin() {
     return (
         <div className="min-h-screen bg-[#F7F8FA] flex flex-col lg:flex-row">
             <Baner />
-
+            {/* Rignt Section */}
             <section className="w-full flex items-center overflow-y-auto lg:w-1/2">
                 <div className="w-full max-w-140 mx-auto px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-16">
                     <p className="text-blue-600 text-sm font-bold mb-3 tracking-wide">

@@ -12,7 +12,7 @@ function Sidebar() {
         <Link to="/" className="rounded-xl px-4 py-3 hover:bg-gray-100">Dashboard</Link>
         <Link to="#" className="rounded-xl px-4 py-3 hover:bg-gray-100">Overview</Link>
         <Link to="#" className="rounded-xl px-4 py-3 hover:bg-gray-100">Reports</Link>
-        <Link to="#" className="rounded-xl px-4 py-3 hover:bg-gray-100">Settings</Link>
+        <Link to="/Settings" className="rounded-xl px-4 py-3 hover:bg-gray-100">Settings</Link>
       </nav>
     </aside>
   )

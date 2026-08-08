@@ -1,8 +1,9 @@
-import React from 'react'
+import Navbar from '../layout/Navbar'
 
 function Dashboard() {
   return (
     <div>
+      <Navbar/>
       Dashboard
     </div>
   )

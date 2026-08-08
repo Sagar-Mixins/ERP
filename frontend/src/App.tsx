@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard/Dashboard'
 import Sidebar from './layout/Sidebar'
 import Signup from './pages/Authentication/Signup';
 import Signin from './pages/Authentication/Signin';
@@ -20,7 +20,7 @@ function App() {
       {/* Sidebar hide on Signin and Signup */}
       {!hideSidebar && <Sidebar />}
 
-      <main className="flex-1 bg-gray-100 min-h-screen ">
+      <main className="flex-1 bg-neutral-100 min-h-screen ">
 
         <Routes>
 

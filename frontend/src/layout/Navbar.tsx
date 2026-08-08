@@ -4,7 +4,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { MdKeyboardArrowDown } from "react-icons/md";
 function Navbar() {
   return (
-    <nav className='flex justify-between bg-white p-5 border-solid border-b-2 border-gray-300' >
+    <nav className='flex justify-between bg-white p-5 border-solid border-b-2 border-gray-200' >
 
       <div className="flex items-center gap-5">
         <LuLayoutDashboard className='h-6 w-6' />
@@ -15,7 +15,7 @@ function Navbar() {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className=' flex items-center gap-2 border-solid border-2 border-gray-300 p-3 rounded-3xl font-medium'>
+        <button className=' flex items-center gap-2 border-solid border-2 border-gray-200 p-3 rounded-3xl font-medium'>
           <IoStorefrontOutline className='h-5 w-5'/>
           Grocery & and General
           <MdKeyboardArrowDown className='h-6 w-6'/>

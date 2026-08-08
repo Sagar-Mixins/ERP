@@ -7,11 +7,11 @@ function Dashboard() {
   return (
     <div>
       <Navbar />
-      <div className="p-5 flex flex-col gap-5">
+      <div className="p-4 sm:p-5 flex flex-col gap-5">
         <Statcard />
-        <div className='flex gap-5'>
-          <Graph/>
-          <Topproducts/>
+        <div className='flex flex-col gap-5 xl:flex-row'>
+          <Graph />
+          <Topproducts />
         </div>
       </div>
     </div>

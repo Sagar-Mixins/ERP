@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import Baner from "./components/Baner";
+import { Link } from "react-router-dom";
 import {
-    ShoppingBag,
     User,
     Phone,
     Mail,
@@ -8,12 +9,11 @@ import {
     Eye,
     EyeOff,
     ArrowRight,
-    ScanBarcode,
-    Gift,
-    Layers,
+
 } from "lucide-react";
 
 function Signup() {
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [agreed, setAgreed] = useState(false);
@@ -26,112 +26,46 @@ function Signup() {
         confirmPassword: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // TODO: hook this up to your signup API call
         console.log(form);
     };
 
     return (
-        <div className="flex h-screen">
 
-            {/* Left Section */}
-            <section className="w-1/2 relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-700 flex flex-col justify-between px-14 py-12 text-white">
+        <div className="min-h-screen bg-[#F7F8FA] flex flex-col lg:flex-row">
 
-                {/* Decorative blobs */}
-                <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10" />
-                <div className="pointer-events-none absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full bg-white/5 translate-x-1/3 translate-y-1/3" />
-
-                {/* Dotted pattern bottom-left */}
-                <div className="pointer-events-none absolute bottom-8 left-10 grid grid-cols-6 gap-2 opacity-30">
-                    {Array.from({ length: 24 }).map((_, i) => (
-                        <span key={i} className="w-1 h-1 rounded-full bg-white" />
-                    ))}
-                </div>
-
-                {/* Logo */}
-                <div className="relative z-10 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur-sm">
-                        <ShoppingBag className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="text-xl font-bold">ShopERP</span>
-                </div>
-
-                {/* Headline + feature list */}
-                <div className="relative z-10">
-                    <h2 className="text-4xl font-extrabold leading-tight mb-5">
-                        Run your shop
-                        <br />
-                        from one screen.
-                    </h2>
-                    <p className="text-blue-100 text-base leading-relaxed mb-8 max-w-sm">
-                        Billing, inventory, GST invoices, purchases, loyalty and accounts
-                        &mdash; built for Indian retail &amp; wholesale.
-                    </p>
-
-                    <ul className="space-y-4">
-                        <li className="flex items-center gap-3 text-sm font-medium text-white">
-                            <ScanBarcode className="w-5 h-5 text-blue-100" />
-                            Barcode &amp; manual billing
-                        </li>
-                        <li className="flex items-center gap-3 text-sm font-medium text-white">
-                            <Gift className="w-5 h-5 text-blue-100" />
-                            Loyalty points &mdash; redeem &amp; earn
-                        </li>
-                        <li className="flex items-center gap-3 text-sm font-medium text-white">
-                            <Layers className="w-5 h-5 text-blue-100" />
-                            Live stock &amp; ledgers
-                        </li>
-                    </ul>
-                </div>
-
-                {/* Stats row */}
-                <div className="relative z-10 flex items-center gap-10">
-                    <div>
-                        <p className="text-2xl font-bold">12k+</p>
-                        <p className="text-blue-100 text-sm">shops billing</p>
-                    </div>
-                    <div className="w-px h-9 bg-white/25" />
-                    <div>
-                        <p className="text-2xl font-bold">₹840Cr</p>
-                        <p className="text-blue-100 text-sm">processed</p>
-                    </div>
-                    <div className="w-px h-9 bg-white/25" />
-                    <div>
-                        <p className="text-2xl font-bold">4.8★</p>
-                        <p className="text-blue-100 text-sm">rated</p>
-                    </div>
-                </div>
-            </section>
+            <Baner />
 
             {/* Right Section */}
-            <section className="w-1/2 bg-[#F7F8FA] flex items-center overflow-y-auto">
-                <div className="w-full max-w-[600px] mx-auto px-20 py-16">
+            <section className="w-full flex items-center overflow-y-auto lg:w-1/2">
+                <div className="w-full max-w-150 mx-auto px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-16">
                     <p className="text-blue-600 text-sm font-bold mb-3 tracking-wide">
                         WELCOME ABOARD
                     </p>
-                    <h1 className="text-[32px] font-extrabold text-gray-900 mb-2 tracking-tight">
+                    <h1 className="text-3xl sm:text-[32px] font-extrabold text-gray-900 mb-2 tracking-tight">
                         Create your ShopERP account
                     </h1>
-                    <p className="text-gray-500 text-base mb-9">
+                    <p className="text-sm sm:text-base text-gray-500 mb-9">
                         Fill the details below to get started.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
 
                         {/* Full name + Phone number */}
-                        <div className="grid grid-cols-2 gap-5">
+                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
                                 <label className="block text-sm font-semibold text-gray-900 mb-2">
                                     Full name
                                 </label>
                                 <div className="relative">
-                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-400" />
+                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
                                     <input
                                         type="text"
                                         name="fullName"
@@ -148,7 +82,7 @@ function Signup() {
                                     Phone number
                                 </label>
                                 <div className="relative">
-                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-400" />
+                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
                                     <input
                                         type="tel"
                                         name="phone"
@@ -167,7 +101,7 @@ function Signup() {
                                 Email address
                             </label>
                             <div className="relative">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-400" />
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
                                 <input
                                     type="email"
                                     name="email"
@@ -185,7 +119,7 @@ function Signup() {
                                 Create password
                             </label>
                             <div className="relative">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-400" />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     name="password"
@@ -199,7 +133,7 @@ function Signup() {
                                     onClick={() => setShowPassword((v) => !v)}
                                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                                 >
-                                    {showPassword ? <EyeOff className="w-[18px] h-[18px]" /> : <Eye className="w-[18px] h-[18px]" />}
+                                    {showPassword ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                                 </button>
                             </div>
                         </div>
@@ -210,7 +144,7 @@ function Signup() {
                                 Confirm password
                             </label>
                             <div className="relative">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-gray-400" />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     name="confirmPassword"
@@ -224,7 +158,7 @@ function Signup() {
                                     onClick={() => setShowConfirmPassword((v) => !v)}
                                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                                 >
-                                    {showConfirmPassword ? <EyeOff className="w-[18px] h-[18px]" /> : <Eye className="w-[18px] h-[18px]" />}
+                                    {showConfirmPassword ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                                 </button>
                             </div>
                         </div>
@@ -271,7 +205,7 @@ function Signup() {
                             type="button"
                             className="w-full flex items-center justify-center gap-2.5 border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 text-[15px] font-semibold py-4 rounded-xl shadow-sm transition-colors"
                         >
-                            <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24">
+                            <svg className="w-4.5 h-4.5" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
                                 <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z" />
                                 <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29A11.96 11.96 0 000 12c0 1.94.46 3.77 1.29 5.38l3.98-3.09z" />
@@ -283,9 +217,9 @@ function Signup() {
                         {/* Sign in link */}
                         <p className="text-center text-sm text-gray-500 pt-1">
                             Already have an account?{" "}
-                            <a href="#" className="text-blue-600 font-semibold hover:underline">
+                            <Link to="/signin" className="text-blue-600 font-semibold hover:underline">
                                 Sign in
-                            </a>
+                            </Link>
                         </p>
                     </form>
                 </div>

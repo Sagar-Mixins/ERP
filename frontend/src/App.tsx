@@ -15,12 +15,12 @@ function App() {
     location.pathname === "/signup";
 
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-neutral-100 lg:flex">
 
       {/* Sidebar hide on Signin and Signup */}
       {!hideSidebar && <Sidebar />}
 
-      <main className="flex-1 bg-neutral-100 min-h-screen ">
+      <main className="flex-1 min-w-0 bg-neutral-100">
 
         <Routes>
 

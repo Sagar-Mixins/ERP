@@ -22,6 +22,7 @@ import GST from './pages/Reports/GST/GST';
 import AI from './pages/Reports/AI/AI';
 import Navbar from './layout/Navbar';
 import Addproduct from "./pages/Masters/Products/components/Addproduct";
+import ProductFooter from './pages/Masters/Products/components/ProductFooter';
 
 function App() {
 
@@ -29,7 +30,12 @@ function App() {
 
   const hideSidebar =
     location.pathname === "/signin" ||
-    location.pathname === "/signup";
+    location.pathname === "/signup" ||
+    location.pathname === '/masters/products/add'
+
+  const hideNavbar =
+    location.pathname === '/signup' ||
+    location.pathname === 'signin';
 
   return (
     <div className="min-h-screen bg-neutral-100 lg:flex">
@@ -39,7 +45,8 @@ function App() {
 
 
       <main className="flex-1 min-w-0 bg-neutral-100">
-        {!hideSidebar && <Navbar />}
+        {/* {!hideSidebar && <Navbar />} */}
+        {!hideNavbar && <Navbar />}
         <Routes>
 
           <Route path="/" element={<Dashboard />} />
@@ -49,6 +56,7 @@ function App() {
 
           <Route path="/masters/products" element={<Products />} />
           <Route path="/masters/products/add" element={<Addproduct />} />
+          {/* <Route path="/masters/products/pro" element={<ProductFooter />} /> */}
           <Route path="/masters/parties" element={<Parties />} />
           <Route path="/masters/accounts" element={<Accounts />} />
           <Route path="/masters/employees" element={<Employees />} />

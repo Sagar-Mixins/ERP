@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ImagePlus, X, Star } from "lucide-react";
+import ProductFooter from "./ProductFooter";
+
 
 function Addproduct() {
     const [step, setStep] = useState(1);
@@ -14,9 +16,40 @@ function Addproduct() {
         tags: '',
         status: 'Active'
     })
+    const handleSaveDraft = () => {
+        console.log(formData.status);
+
+        localStorage.setItem(
+            "productDraft",
+            JSON.stringify(formData)
+        );
+        alert("Saved successfully!")
+    }
+    const handleNext = () => {
+        setStep((prev) => prev + 1);
+    };
+    const handleBack = () => {
+        setStep((prev) => prev - 1);
+    };
+    const handlePublish = () => {
+        alert("Done Sir!")
+    };
+
 
     return (
+
         <div className="min-h-screen bg-[#f7f9fc] px-4 py-6">
+            {/*  Components  */}
+            <ProductFooter
+                step={step}
+                onSaveDraft={handleSaveDraft}
+                onBack={step > 1 ? handleBack : undefined}
+                onNext={handleNext}
+                onPublish={handlePublish}
+            />
+
+
+
             <div className="mx-auto max-w-7xl">
                 <div className="mb-4 flex gap-2">
                     <div
@@ -25,8 +58,13 @@ function Addproduct() {
             ${step === 1 ? "border-blue-600 bg-blue-50" : "border-gray-200 bg-white hover:border-gray-300"}`}>
                         <div className="flex items-center gap-2">
                             <span
-                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold
-                    ${step === 1 ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-500"}`}> 1</span>
+                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${step > 1
+                                    ? "bg-green-600 text-white"
+                                    : "bg-blue-600 text-white"
+                                    }`}
+                            >
+                                {step > 1 ? "✓" : "1"}
+                            </span>
                             <span className={`text-sm font-semibold ${step === 1 ? "text-blue-600" : "text-gray-600"}`}> Basics</span>
                         </div>
                     </div>
@@ -37,8 +75,15 @@ function Addproduct() {
             ${step === 2 ? "border-blue-600 bg-blue-50" : "border-gray-200 bg-white hover:border-gray-300"}`}>
                         <div className="flex items-center gap-2">
                             <span
-                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold
-                    ${step === 2 ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-500"}`}>2</span>
+                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${step > 2
+                                    ? "bg-green-600 text-white"
+                                    : step === 2
+                                        ? "bg-blue-600 text-white"
+                                        : "bg-gray-100 text-gray-500"
+                                    }`}
+                            >
+                                {step > 2 ? "✓" : "2"}
+                            </span>
                             <span className={`text-sm font-semibold ${step === 2 ? "text-blue-600" : "text-gray-600"}`}>Pricing & Tax</span>
                         </div>
                     </div>
@@ -48,8 +93,13 @@ function Addproduct() {
             ${step === 3 ? "border-blue-600 bg-blue-50" : "border-gray-200 bg-white hover:border-gray-300"}`}>
                         <div className="flex items-center gap-2">
                             <span
-                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold
-                    ${step === 3 ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-500"}`}>3</span>
+                                className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${step === 3
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-gray-100 text-gray-500"
+                                    }`}
+                            >
+                                3
+                            </span>
                             <span className={`text-sm font-semibold ${step === 3 ? "text-blue-600" : "text-gray-600"}`}>Online</span>
                         </div>
                     </div>
@@ -230,19 +280,47 @@ function Addproduct() {
                                         Status
                                     </label>
                                     <div className="grid grid-cols-3 overflow-hidden rounded-xl border border-gray-200">
-                                        <button onChange={() =>
-                                            setFormData({
-                                                ...formData,
-                                                status: "Active"
-                                            })
-                                        }
-                                            className="bg-blue-600 px-4 py-3 text-sm font-semibold text-white">
+                                        <button
+                                            onClick={() =>
+                                                // console.log("ACTIVE CLICKED");
+                                                setFormData({
+                                                    ...formData,
+                                                    status: "Active"
+                                                })
+                                            }
+                                            className={`px-4 py-3 text text-sm ${formData.status === "Active"
+                                                ? "bg-blue-600 text-white"
+                                                : "bg-white text-gray-700"
+                                                }`}
+                                        >
                                             Active
                                         </button>
-                                        <button className="border-l border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                                        <button
+                                            onClick={() =>
+                                                setFormData({
+                                                    ...formData,
+                                                    status: "Draft"
+                                                })
+                                            }
+                                            className={`px-4 py-3 text-sm ${formData.status === "Draft"
+                                                ? "bg-blue-600 text-white"
+                                                : "bg-white text-gray-700"
+                                                }`}
+                                        >
                                             Draft
                                         </button>
-                                        <button className="border-l border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                                        <button
+                                            onClick={() =>
+                                                setFormData({
+                                                    ...formData,
+                                                    status: "Out of Stock"
+                                                })
+                                            }
+                                            className={`px-4 py-3 text-sm ${formData.status === "Out of Stock"
+                                                ? "bg-blue-600 text-white"
+                                                : "bg-white text-gray-700"
+                                                }`}
+                                        >
                                             Out of Stock
                                         </button>
                                     </div>
@@ -250,6 +328,7 @@ function Addproduct() {
                             </div>
                         </div>
                         {/* LIVE PREVIEW */}
+
                         <div className="h-fit rounded-xl border border-gray-200 bg-white shadow-sm">
                             <div className="border-b border-gray-200 px-4 py-3">
                                 <p className="text-xs font-semibold text-gray-500">
@@ -261,8 +340,15 @@ function Addproduct() {
                                     <span className="text-4xl text-gray-300">
                                         🖼️
                                     </span>
-                                    <span className="absolute right-2 top-2 rounded-full bg-green-100 px-2 py-1 text-[10px] font-semibold text-green-600">
-                                        Active
+                                    <span
+                                        className={`absolute right-2 top-2 rounded-full px-2 py-1 text-[10px] font-semibold ${formData.status === "Active"
+                                            ? "bg-green-100 text-green-600"
+                                            : formData.status === "Draft"
+                                                ? "bg-gray-100 text-gray-600"
+                                                : "bg-red-100 text-red-600"
+                                            }`}
+                                    >
+                                        {formData.status}
                                     </span>
                                 </div>
                                 <div className="mt-3">

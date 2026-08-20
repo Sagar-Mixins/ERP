@@ -67,7 +67,7 @@ function Sidebar() {
 
   return (
     <aside
-      className={`shrink-0 self-stretch overflow-hidden bg-slate-950 text-slate-300 shadow-xl transition-[width] duration-200 lg:min-h-screen ${isExpanded ? "w-full lg:w-64" : "w-full lg:w-20"}`}>
+      className={`shrink-0 self-stretch overflow-hidden bg-slate-950 text-slate-300 shadow-xl transition-[width] duration-200 lg:min-h-screen ${isExpanded ? "w-full lg:w-64" : "w-full lg:w-fit"}`}>
       <div className="flex h-18 items-center border-b border-white/10 px-3">
         {isExpanded && (
           <div className="flex min-w-0 flex-1 items-center gap-3">

@@ -22,7 +22,7 @@ import GST from './pages/Reports/GST/GST';
 import AI from './pages/Reports/AI/AI';
 import Navbar from './layout/Navbar';
 import Addproduct from "./pages/Masters/Products/components/Addproduct";
-import ProductFooter from './pages/Masters/Products/components/ProductFooter';
+import AddOffers from './pages/Masters/Offers/AddOffers';
 
 function App() {
 
@@ -32,6 +32,7 @@ function App() {
     location.pathname === "/signin" ||
     location.pathname === "/signup" ||
     location.pathname === '/masters/products/add'
+    location.pathname === '/masters/offers/add'
 
   const hideNavbar =
     location.pathname === '/signup' ||
@@ -56,11 +57,12 @@ function App() {
 
           <Route path="/masters/products" element={<Products />} />
           <Route path="/masters/products/add" element={<Addproduct />} />
-          {/* <Route path="/masters/products/pro" element={<ProductFooter />} /> */}
+  
           <Route path="/masters/parties" element={<Parties />} />
           <Route path="/masters/accounts" element={<Accounts />} />
           <Route path="/masters/employees" element={<Employees />} />
           <Route path="/masters/offers" element={<Offers />} />
+          <Route path="/masters/offers/add" element={<AddOffers/>} />
 
           <Route path="/transactions/sales" element={<Sales />} />
           <Route path="/transactions/purchase" element={<Purchase />} />

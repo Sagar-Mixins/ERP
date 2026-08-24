@@ -9,10 +9,13 @@ import Online from "./Online";
 import { FaFolder } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 
 function Addproduct() {
+    const navigate = useNavigate()
     const [step, setStep] = useState(1)
     const [formData, setFormData] = useState({
         productName: '',
@@ -63,6 +66,24 @@ function Addproduct() {
     const [showImageOptions, setShowImageOptions] = useState(false);
     return (
         <div className="min-h-screen bg-[#f7f9fc] px-4 py-6">
+            <nav className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white p-2">
+                <div className="flex items-center gap-3">
+
+                    <button onClick={() => navigate(-1)} className="border border-gray-200 rounded-lg p-3 cursor-pointer hover:bg-gray-50 shrink-0">
+                        <FaArrowLeft size={15} />
+                    </button>
+
+                    <div>
+                        <h3 className="text-xl font-bold">
+                            Add Product
+                        </h3>
+                        <span className="text-sm text-gray-500">
+                            Step 1 of 3 · Basics
+                        </span>
+                    </div>
+
+                </div>
+            </nav>
             {/*  Components  */}
             <ProductFooter
                 step={step}

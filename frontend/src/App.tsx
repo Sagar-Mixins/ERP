@@ -1,5 +1,6 @@
 import './App.css'
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useState } from 'react';
 
 import Dashboard from './pages/Dashboard/Dashboard'
 import Sidebar from './layout/Sidebar'
@@ -28,6 +29,8 @@ function App() {
 
   const location = useLocation();
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const hideSidebar =
     location.pathname === "/signin" ||
     location.pathname === "/signup" ||
@@ -42,13 +45,11 @@ function App() {
   return (
     <div className="min-h-screen bg-neutral-100 lg:flex">
 
-      {!hideSidebar && <Sidebar />}
-
-
+      {!hideSidebar && <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>}
 
       <main className="min-w-0 flex-1 bg-slate-100">
-        {!hideNavbar && <Navbar />}
-
+        {!hideNavbar && <Navbar onMenuClick={()=> setMobileOpen(true)} />}
+          
         {!hideSidebar && (
           <div className="h-16 lg:hidden" />
         )}

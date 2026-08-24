@@ -31,12 +31,13 @@ function App() {
   const hideSidebar =
     location.pathname === "/signin" ||
     location.pathname === "/signup" ||
-    location.pathname === '/masters/products/add'
+    location.pathname === '/masters/products/add' ||
     location.pathname === '/masters/offers/add'
 
   const hideNavbar =
     location.pathname === '/signup' ||
-    location.pathname === 'signin';
+    location.pathname === 'signin' ||
+    location.pathname === '/masters/offers/add'
 
   return (
     <div className="min-h-screen bg-neutral-100 lg:flex">
@@ -45,9 +46,13 @@ function App() {
 
 
 
-      <main className="flex-1 min-w-0 bg-neutral-100">
-        {/* {!hideSidebar && <Navbar />} */}
+      <main className="min-w-0 flex-1 bg-slate-100">
         {!hideNavbar && <Navbar />}
+
+        {!hideSidebar && (
+          <div className="h-16 lg:hidden" />
+        )}
+
         <Routes>
 
           <Route path="/" element={<Dashboard />} />

@@ -21,11 +21,11 @@ function Navbar() {
   location.pathname === "/masters/employees" ? "Employees" :
   location.pathname === "/masters/offers" ? "Offers" :
   
-//  Reports
+  //  Reports
   location.pathname === "/reports/AI" ? "AI":
   location.pathname === "/reports/GST" ? "GST":
   location.pathname === "/reports/report" ? "Report":
-// Finance
+  // Finance
   location.pathname === "/Finance/ledger" ? "ledger" :
   location.pathname === "/Finance/voucher" ? "voucher" :
   // Transactions
@@ -35,15 +35,13 @@ function Navbar() {
   location.pathname === "/trasaction/update" ? "update" :
 
 
-  
-
   "Dashboard";
 
 
   return (
-    <nav className='flex flex-col gap-4 bg-white p-4 sm:p-5 border-solid border-b border-gray-200 lg:flex-row lg:items-center lg:justify-between h-18' >
+    <nav className='flex flex-col gap-4 bg-white p-4 sm:p-5 border-solid border-b border-gray-200 lg:flex-row lg:items-center lg:justify-between lg:h-16.5' >
 
-      <div className="flex items-start gap-4 sm:items-center sm:gap-5">
+      <div className="flex items-start gap-4 sm:items-center sm:gap-5 sm:hidden">
         <LuLayoutDashboard size={23} />
         <div>
           <h2 className="text-lg sm:text-xl font-medium">{pageName}</h2>

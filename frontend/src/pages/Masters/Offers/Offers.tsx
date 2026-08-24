@@ -61,7 +61,7 @@ function Offers() {
 
       <div className="flex flex-wrap gap-5">
         {offers.map((offer) => (
-          <Offercard key={offer.couponcode} offer={offer} />
+          <Offercard formData={offer} />
         ))}
       </div>
     </div>

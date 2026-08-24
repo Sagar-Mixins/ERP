@@ -12,28 +12,21 @@ function ProductFooter({ onSaveDraft, onNext, onBack, step, onPublish }) {
                 <div className='flex justify-right gap-2'>
                     {onBack && (
                         <button onClick={onBack}
-                            className='rounded-lg border border-gray-300 px-3 py-1.5 text-sm'
-                        >
+                            className='rounded-lg border border-gray-300 px-3 py-1.5 text-sm'>
                             ← Back
-                        </button>
-                    )}
+                        </button>)}
                     <button onClick={onSaveDraft}
-                        className='rounded-lg border border-gray-300 px-3 py-1.5 text-sm '>
-                        Save draft
+                        className='rounded-lg border border-gray-300 px-3 py-1.5 text-sm '>Save draft
                     </button>
                     {step < 3 ? (
                         <button
                             onClick={onNext}
-                            className='rounded-lg bg-blue-600 px-4 py-1.5 text-sm text-white hover:bg-blue-700'
-                        >
-                            Next →
-                        </button>
+                            className='rounded-lg bg-blue-600 px-4 py-1.5 text-sm text-white hover:bg-blue-700'>
+                            Next →</button>
                     ) : (
                         <button
                             onClick={onPublish}
-                            className='rounded-lg bg-blue-600 px-4 py-1.5 text-sm text-white hover:bg-blue-700'
-                        >
-                            Publish
+                            className='rounded-lg bg-blue-600 px-4 py-1.5 text-sm text-white hover:bg-blue-700'>Publish
                         </button>
                     )}
                 </div>
